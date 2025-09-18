@@ -45,24 +45,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                     <strong>{part}</strong>
                   ) : (
                     part
-                  )}
-                  {index < product.title.length - 1 && <br />}
+                  )}{" "}
                 </React.Fragment>
               ))
             : product.title}
         </h3>
-        <p className={styles.bannerText}>
-          {product.description
-            .split("<br />")
-            .map((line: string, index: number) => (
-              <React.Fragment key={index}>
-                {line.trim()}
-                {index < product.description.split("<br />").length - 1 && (
-                  <br />
-                )}
-              </React.Fragment>
-            ))}
-        </p>
+        <p className={styles.bannerText}>{product.description}</p>
       </Flex>
     </Flex>
   );

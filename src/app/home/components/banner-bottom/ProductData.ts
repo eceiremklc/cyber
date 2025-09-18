@@ -36,7 +36,7 @@ const PRODUCT_DATA = {
     width: 285.5,
     height: 272,
     title: ["Apple", "Airpods", "Max"],
-    description: "Computational audio. <br /> Listen, it's powerful",
+    description: "Computational audio. Listen, it's powerful",
   } as ArrayTitleProduct,
 
   visionPro: {
@@ -45,7 +45,7 @@ const PRODUCT_DATA = {
     width: 285.5,
     height: 272,
     title: ["Apple", "Vision", "Pro"],
-    description: "An immersive way to <br />experience entertainment.",
+    description: "An immersive way to experience entertainment.",
   } as ArrayTitleProduct,
 
   macbook: {
@@ -53,8 +53,7 @@ const PRODUCT_DATA = {
     alt: "MacBook Pro",
     width: 776,
     height: 600,
-    title: "Macbook",
-    subtitle: "Air",
+    title: "Macbook Air",
     description:
       "The new 15‑inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.",
   } as MacBookProduct,

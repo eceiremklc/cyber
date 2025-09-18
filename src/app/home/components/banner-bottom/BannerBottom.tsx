@@ -8,21 +8,21 @@ const BannerBottom: React.FC = () => {
   return (
     <div className={styles.bannerBottom}>
       <Row>
-        <Col xs={24} sm={24} md={24} lg={12} className={styles.leftCol}>
+        <Col xs={24} sm={24} md={24} lg={24} xl={12} className={styles.leftCol}>
           <ProductCard
             product={PRODUCT_DATA.playstation}
             className={styles.playStation}
             textClass={styles.playStationText}
           />
           <Flex wrap>
-            <Col xs={24} sm={24} md={24} lg={12}>
+            <Col xs={24} sm={24} md={12} lg={12}>
               <ProductCard
                 product={PRODUCT_DATA.airpods}
                 className={styles.airpods}
                 textClass={styles.airpodsText}
               />
             </Col>
-            <Col xs={24} sm={24} md={24} lg={12}>
+            <Col xs={24} sm={24} md={12} lg={12}>
               <ProductCard
                 product={PRODUCT_DATA.visionPro}
                 className={styles.visionPro}
@@ -31,7 +31,14 @@ const BannerBottom: React.FC = () => {
             </Col>
           </Flex>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={12} className={styles.macbookCol}>
+        <Col
+          xs={24}
+          sm={24}
+          md={24}
+          lg={24}
+          xl={12}
+          className={styles.macbookCol}
+        >
           <Flex className={styles.macbook} justify="space-between">
             <Flex vertical justify="center" className={styles.macbookText}>
               <h3>{PRODUCT_DATA.macbook.title}</h3>
