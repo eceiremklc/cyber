@@ -1,0 +1,27 @@
+.collapsedMenu {
+  button {
+    margin: 25px 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    svg {
+      fill: #000;
+      font-size: 25px;
+    }
+    &:active,
+    &:focus {
+      background: transparent !important;
+      outline: none !important;
+    }
+  }
+  input {
+    width: 100%;
+    border: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .collapsedMenu {
+    display: none;
+  }
+}

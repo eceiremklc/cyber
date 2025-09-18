@@ -1,0 +1,7 @@
+:root {
+  font-family: var(--font-inter-sans);
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}

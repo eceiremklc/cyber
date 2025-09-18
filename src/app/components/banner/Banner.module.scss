@@ -1,0 +1,147 @@
+.banner {
+  background: linear-gradient(90.7deg, #211c24 0.64%, #211c24 101%);
+  .bannerContent {
+    width: 80%;
+    margin: 0 auto;
+    .bannerTextContainer {
+      color: white;
+      h3 {
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 32px;
+        color: gray;
+        margin: 0;
+      }
+      .bannerText {
+        font-size: 96px;
+        font-weight: 200;
+        margin: 0 0 24px 0;
+        line-height: 72px;
+        letter-spacing: -1%;
+        strong {
+          font-weight: 600;
+        }
+      }
+      .bannerDesc {
+        font-size: 18px;
+        color: #909090;
+      }
+      .shopBtn {
+        margin-top: 24px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        padding: 27px 57px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 6px;
+        line-height: 24px;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+    .bannerImageContainer {
+      display: flex;
+      justify-content: end;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .banner {
+    .bannerContent {
+      .bannerTextContainer {
+        h3 {
+          font-size: 25px;
+        }
+        .bannerText {
+          font-size: 72px;
+          width: 80%;
+        }
+        .bannerDesc {
+          font-size: 19px;
+          width: 80%;
+        }
+        .shopBtn {
+          padding: 20px 40px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1100px) {
+  .banner .bannerContent .bannerTextContainer {
+    h3 {
+      font-size: 20px;
+    }
+    .bannerText {
+      font-size: 64px;
+    }
+    .bannerDesc {
+      font-size: 16px;
+    }
+  }
+  .banner .bannerContent .bannerImageContainer {
+    .bimg {
+      width: 350px;
+      height: 522.6px;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .banner .bannerContent .bannerTextContainer {
+    h3 {
+      font-size: 17px;
+    }
+    .bannerText {
+      font-size: 60px;
+    }
+    .bannerDesc {
+      font-size: 13px;
+    }
+    .shopBtn {
+      font-size: 12px;
+    }
+  }
+  .banner .bannerContent .bannerImageContainer {
+    .bimg {
+      width: 300px;
+      height: 448px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .banner .bannerContent {
+    .bannerTextContainer {
+      padding: 88px 16px 48px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      h3 {
+        font-size: 25px;
+      }
+      .bannerText {
+        font-size: 72px;
+      }
+      .bannerDesc {
+        font-size: 19px;
+      }
+      .shopBtn {
+        font-size: 16px;
+      }
+    }
+    .bannerImageContainer {
+      height: 330px;
+      justify-content: center;
+      .bimg {
+        width: 343px;
+        height: 533.9px;
+        position: relative;
+        bottom: 42px;
+      }
+    }
+  }
+}
