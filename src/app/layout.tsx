@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./shared/navbar/Navbar";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const InterSans = Inter({
