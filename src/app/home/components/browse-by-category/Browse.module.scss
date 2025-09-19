@@ -1,0 +1,37 @@
+.browse {
+  padding: 50px 0;
+  width: 80%;
+  margin: 0 auto;
+  .col {
+    display: flex;
+    justify-content: center;
+  }
+}
+.card {
+  width: 160px;
+  height: 128px;
+  border-radius: 15px;
+  background-color: #ededed;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 24px 56px;
+  border: none;
+  cursor: pointer;
+  svg {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  p {
+    margin: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .browse {
+    width: 90%;
+  }
+  .card {
+    width: 140px;
+    height: 112px;
+    padding: 20px 48px;
+  }
+}

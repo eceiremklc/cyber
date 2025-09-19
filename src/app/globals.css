@@ -1,5 +1,5 @@
 :root {
-  font-family: var(--font-inter-sans);
+  font-family: var(--font-inter-sans) !important;
 }
 body {
   margin: 0;

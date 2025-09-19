@@ -1,0 +1,30 @@
+.productCard {
+  height: 432px;
+  background-color: #f6f6f6;
+  padding: 24px 16px;
+  border-radius: 9px;
+  text-align: center;
+  .wishlistIcon {
+    display: flex;
+    justify-content: flex-end;
+    svg {
+      font-size: 30px;
+      color: #90909080;
+    }
+  }
+  .producImg {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+  h4 {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 500;
+  }
+  p {
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
