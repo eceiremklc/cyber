@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./shared/navbar/Navbar";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider } from "antd";
 
 const InterSans = Inter({
   subsets: ["latin"],
@@ -20,10 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${InterSans.className}`}>
+      <body className={InterSans.className}>
         <AntdRegistry>
-          <Navbar />
-          {children}
+          <ConfigProvider
+            theme={{
+              token: {
+                fontFamily: InterSans.style.fontFamily,
+              },
+            }}
+          >
+            <Navbar />
+            {children}
+          </ConfigProvider>
         </AntdRegistry>
       </body>
     </html>

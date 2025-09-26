@@ -7,11 +7,22 @@ import { Product } from "@/app/types/Product";
 import { formatProducts } from "@/app/utils/formatProduct";
 
 const ProductsTable = () => {
-  const { products } = useProductStore();
+  const { products, addToWishlist, favProducts } = useProductStore();
   const formattedProducts: Product[] = formatProducts(products);
 
   return (
     <div className={styles.productsTable}>
+      <Row className={styles.categoriesRow}>
+        <button>
+          <h3>New Arrival</h3>
+        </button>
+        <button>
+          <h3>Bestseller</h3>
+        </button>
+        <button>
+          <h3>Featured Products</h3>
+        </button>
+      </Row>
       <Flex justify="space-between" align="center">
         <Row gutter={[16, 16]} className={styles.productsRow}>
           {formattedProducts.map((product) => (
@@ -20,6 +31,8 @@ const ProductsTable = () => {
                 imageUrl={product.image}
                 title={product.title}
                 price={product.price}
+                addToWishlist={() => addToWishlist(product)}
+                heartActive={favProducts.some((p) => p.id === product.id)}
               />
             </Col>
           ))}

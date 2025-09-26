@@ -1,5 +1,5 @@
 :root {
-  font-family: var(--font-inter-sans) !important;
+  --app-font: var(--font-inter), sans-serif;
 }
 body {
   margin: 0;

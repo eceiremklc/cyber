@@ -8,11 +8,12 @@ import { useEffect } from "react";
 import ProductsTable from "./home/components/products/ProductsTable";
 
 export default function Home() {
-  const { products, fetchAll } = useProductStore();
+  const { products, fetchAll, favProducts } = useProductStore();
   useEffect(() => {
     fetchAll();
   }, []);
   console.log(products);
+  console.log(favProducts);
   return (
     <div className={styles.page}>
       <main className={styles.main}>

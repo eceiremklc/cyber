@@ -11,18 +11,26 @@ interface ProductCardProps {
   title: string;
   price: number;
   addToWishlist?: () => void;
+  heartActive?: boolean;
 }
 const ProductCard: React.FC<ProductCardProps> = ({
   imageUrl,
   title,
   price,
   addToWishlist,
+  heartActive = false,
 }) => {
   return (
     <div className={styles.productCard}>
       <Flex vertical>
         <div className={styles.wishlistIcon}>
-          <IoHeartOutline onClick={addToWishlist} />
+          {heartActive === true ? (
+            <IoHeartOutline fill="#ff0000" />
+          ) : (
+            <button onClick={addToWishlist}>
+              <IoHeartOutline fill="#000000" />
+            </button>
+          )}
         </div>
         <Image
           src={imageUrl}
@@ -33,6 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
         <h4>{title}</h4>
         <p>${price}</p>
+        <button className={styles.cartBtn}>Buy Now</button>
       </Flex>
     </div>
   );

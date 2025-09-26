@@ -4,4 +4,15 @@
   .productsRow {
     width: 100%;
   }
+  .categoriesRow {
+    gap: 32px;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #8b8b8b;
+    }
+  }
 }
