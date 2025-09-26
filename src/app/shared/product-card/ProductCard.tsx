@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import styles from "./ProductCard.module.scss";
 import { Flex } from "antd";
-import { IoHeartOutline } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import Image from "next/image";
 import { useProductStore } from "@/app/store/UseProductStore";
 
@@ -25,10 +26,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <Flex vertical>
         <div className={styles.wishlistIcon}>
           {heartActive === true ? (
-            <IoHeartOutline fill="#ff0000" />
+            <button onClick={addToWishlist}>
+              <FaHeart fill="#ff0000" />
+            </button>
           ) : (
             <button onClick={addToWishlist}>
-              <IoHeartOutline fill="#000000" />
+              <FaRegHeart color="#90909077" />
             </button>
           )}
         </div>

@@ -6,9 +6,15 @@
   .wishlistIcon {
     display: flex;
     justify-content: flex-end;
-    svg {
-      font-size: 30px;
-      color: #90909080;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      svg {
+        font-size: 30px;
+        color: #90909080;
+      }
     }
   }
   .producImg {
