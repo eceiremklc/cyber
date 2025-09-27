@@ -12,6 +12,7 @@ interface ProductCardProps {
   title: string;
   price: number;
   addToWishlist?: () => void;
+  removeFromWishlist?: () => void;
   heartActive?: boolean;
 }
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -19,6 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   title,
   price,
   addToWishlist,
+  removeFromWishlist,
   heartActive = false,
 }) => {
   return (
@@ -26,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <Flex vertical>
         <div className={styles.wishlistIcon}>
           {heartActive === true ? (
-            <button onClick={addToWishlist}>
+            <button onClick={removeFromWishlist}>
               <FaHeart fill="#ff0000" />
             </button>
           ) : (

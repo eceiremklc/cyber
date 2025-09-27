@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import styles from "./ProductsTable.module.scss";
 import { Flex, Row, Col } from "antd";
 import { useProductStore } from "@/app/store/UseProductStore";
@@ -6,10 +7,22 @@ import ProductCard from "@/app/shared/product-card/ProductCard";
 import { Product } from "@/app/types/Product";
 import { formatProducts } from "@/app/utils/formatProduct";
 
-const ProductsTable = () => {
-  const { products, addToWishlist, favProducts } = useProductStore();
-  const formattedProducts: Product[] = formatProducts(products);
+type Props = {
+  products: Product[];
+};
 
+const ProductsTable: React.FC<Props> = ({ products }) => {
+  const {
+    setProducts,
+    allProducts,
+    addToWishlist,
+    removeFromWishlist,
+    favProducts,
+  } = useProductStore();
+  const formattedProducts = formatProducts(products);
+  useEffect(() => {
+    setProducts(products);
+  }, []);
   return (
     <div className={styles.productsTable}>
       <Row className={styles.categoriesRow}>
@@ -32,6 +45,7 @@ const ProductsTable = () => {
                 title={product.title}
                 price={product.price}
                 addToWishlist={() => addToWishlist(product)}
+                removeFromWishlist={() => removeFromWishlist(product)}
                 heartActive={favProducts.some((p) => p.id === product.id)}
               />
             </Col>

@@ -10,7 +10,8 @@ type ProductStore = {
   cart: Product[];
   loading: boolean;
   error: string | null;
-  fetchAll: () => Promise<void>;
+  //fetchAll: () => Promise<void>;
+  setProducts: (products: Product[]) => void;
   searchProduct: (query: string) => Promise<void>;
   filterProducts: (category: string) => void;
   sortProducts: (sortBy: string) => void;
@@ -30,27 +31,31 @@ export const useProductStore = create<ProductStore>()(
       loading: false,
       error: null,
 
-      fetchAll: async () => {
-        try {
-          set({ loading: true, error: null }); // Yeni yüklemede hatayı sıfırla
-          const data = await fetchProducts();
-          set({ products: data, allProducts: data, loading: false });
-        } catch (err: unknown) {
-          // Hata tipini 'unknown' olarak değiştirdik
-          // Hatanın bir Error objesi olup olmadığını kontrol et
-          if (err instanceof Error) {
-            set({
-              error: err.message,
-              loading: false,
-            });
-          } else {
-            // Eğer Error objesi değilse, genel bir hata mesajı ver
-            set({
-              error: "Bilinmeyen bir hata oluştu.",
-              loading: false,
-            });
-          }
-        }
+      // fetchAll: async () => {
+      //   try {
+      //     set({ loading: true, error: null }); // Yeni yüklemede hatayı sıfırla
+      //     const data = await fetchProducts();
+      //     set({ products: data, allProducts: data, loading: false });
+      //   } catch (err: unknown) {
+      //     // Hata tipini 'unknown' olarak değiştirdik
+      //     // Hatanın bir Error objesi olup olmadığını kontrol et
+      //     if (err instanceof Error) {
+      //       set({
+      //         error: err.message,
+      //         loading: false,
+      //       });
+      //     } else {
+      //       // Eğer Error objesi değilse, genel bir hata mesajı ver
+      //       set({
+      //         error: "Bilinmeyen bir hata oluştu.",
+      //         loading: false,
+      //       });
+      //     }
+      //   }
+      // },
+      setProducts: (products: Product[]) => {
+        set({ products });
+        set({ allProducts: products });
       },
 
       searchProduct: async (query: string) => {
