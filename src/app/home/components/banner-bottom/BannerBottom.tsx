@@ -4,6 +4,7 @@ import { Flex, Row, Col, Button } from "antd";
 import Image from "next/image";
 import PRODUCT_DATA from "./ProductData";
 import { ProductCard } from "./ProductCard";
+import ShopNow from "@/app/shared/shop-btn/ShopNow";
 const BannerBottom: React.FC = () => {
   return (
     <div className={styles.bannerBottom}>
@@ -46,9 +47,7 @@ const BannerBottom: React.FC = () => {
               <p className={styles.bannerText}>
                 {PRODUCT_DATA.macbook.description}
               </p>
-              <Button variant="outlined" className={styles.shopBtn}>
-                Shop Now
-              </Button>
+              <ShopNow textColor="black" />
             </Flex>
             <div className={styles.imageWrapper}>
               <Image

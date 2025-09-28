@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./BannerT.module.scss";
 import { Flex, Row, Col } from "antd";
 import Image from "next/image";
+import ShopNow from "@/app/shared/shop-btn/ShopNow";
 
 const BannerT = () => {
   return (
@@ -23,6 +24,7 @@ const BannerT = () => {
                 iPad combines a magnificent 10.2-inch Retina display, incredible
                 performance, multitasking and ease of use.
               </p>
+              <ShopNow textColor="black" />
             </div>
           </Flex>
         </Col>
@@ -42,6 +44,7 @@ const BannerT = () => {
                 iPad combines a magnificent 10.2-inch Retina display, incredible
                 performance, multitasking and ease of use.
               </p>
+              <ShopNow textColor="black" />
             </div>
           </Flex>
         </Col>
@@ -61,6 +64,7 @@ const BannerT = () => {
                 iPad combines a magnificent 10.2-inch Retina display, incredible
                 performance, multitasking and ease of use.
               </p>
+              <ShopNow textColor="black" />
             </div>
           </Flex>
         </Col>
@@ -80,6 +84,7 @@ const BannerT = () => {
                 iPad combines a magnificent 10.2-inch Retina display, incredible
                 performance, multitasking and ease of use.
               </p>
+              <ShopNow textColor="white" />
             </div>
           </Flex>
         </Col>

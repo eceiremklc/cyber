@@ -26,21 +26,6 @@
         font-size: 18px;
         color: #909090;
       }
-      .shopBtn {
-        margin-top: 24px;
-        background-color: transparent;
-        border: 1px solid white;
-        color: white;
-        padding: 27px 57px;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 6px;
-        line-height: 24px;
-        cursor: pointer;
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-        }
-      }
     }
     .bannerImageContainer {
       display: flex;

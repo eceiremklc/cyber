@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Banner.module.scss";
 import { Button, Row, Col } from "antd";
 import Image from "next/image";
+import ShopNow from "@/app/shared/shop-btn/ShopNow";
 const Banner = () => {
   return (
     <div className={styles.banner}>
@@ -18,9 +19,7 @@ const Banner = () => {
           <p className={styles.bannerDesc}>
             Created to change everything for the better. For everyone
           </p>
-          <Button variant="outlined" className={styles.shopBtn}>
-            Shop Now
-          </Button>
+          <ShopNow textColor="white" />
         </Col>
         <Col xs={24} sm={24} md={10} className={styles.bannerImageContainer}>
           <Image

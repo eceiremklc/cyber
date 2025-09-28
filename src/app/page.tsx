@@ -4,6 +4,7 @@ import BannerBottom from "./home/components/banner-bottom/BannerBottom";
 import Browse from "./home/components/browse-by-category/Browse";
 import ProductsTable from "./home/components/products/ProductsTable";
 import BannerT from "./home/components/banner3/BannerT";
+import BannerFour from "./home/components/BannerFour";
 
 export default async function Home() {
   const products = await fetchISRProducts();
@@ -15,6 +16,7 @@ export default async function Home() {
         <Browse />
         <ProductsTable products={products} />
         <BannerT />
+        <BannerFour />
       </main>
     </div>
   );
