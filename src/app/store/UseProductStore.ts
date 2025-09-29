@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { Product } from "../types/Product";
 import { persist } from "zustand/middleware";
 import { fetchProducts } from "../api/FetchProducts";
+import { formatProducts } from "../utils/formatProduct";
 
 type ProductStore = {
   products: Product[];
@@ -14,6 +15,7 @@ type ProductStore = {
   setProducts: (products: Product[]) => void;
   searchProduct: (query: string) => Promise<void>;
   filterProducts: (category: string) => void;
+  discountProducts?: (discount: number) => Product[];
   sortProducts: (sortBy: string) => void;
   addToWishlist: (product: Product) => void;
   removeFromWishlist: (product: Product) => void;
@@ -86,6 +88,11 @@ export const useProductStore = create<ProductStore>()(
             p.category.trim().toLowerCase() === category.trim().toLowerCase()
         );
         set({ products: filtered });
+      },
+      discountProducts: (discount: number) => {
+        const { allProducts } = get();
+        const formatted = formatProducts(allProducts);
+        return formatted.filter((p) => p.discountPercentage >= discount);
       },
 
       sortProducts: (sortBy: string) => {

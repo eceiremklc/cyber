@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./shared/navbar/Navbar";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
+import Footer from "./shared/footer/Footer";
 
 const InterSans = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
+            <Footer />
           </ConfigProvider>
         </AntdRegistry>
       </body>
