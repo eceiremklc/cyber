@@ -68,8 +68,11 @@ export const useProductStore = create<ProductStore>()(
           return;
         }
 
-        const filtered = allProducts.filter((p) =>
-          p.title.toLowerCase().includes(query.toLowerCase())
+        const filtered = allProducts.filter(
+          (p) =>
+            p.title.toLowerCase().includes(query.toLowerCase()) ||
+            p.description.toLowerCase().includes(query.toLowerCase()) ||
+            p.category.toLowerCase().includes(query.toLowerCase())
         );
 
         set({ products: filtered });

@@ -33,6 +33,35 @@
     gap: 24px;
     .icon {
       color: #000;
+      position: relative;
+      .favCount {
+        position: absolute;
+        background-color: red;
+        color: white;
+        font-size: 10px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -8px;
+        right: -8px;
+      }
+      .cartCount {
+        position: absolute;
+        background-color: red;
+        color: white;
+        font-size: 10px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -8px;
+        right: -8px;
+      }
     }
   }
 }

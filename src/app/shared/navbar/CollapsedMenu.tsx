@@ -5,32 +5,35 @@ import Link from "next/link";
 import { MenuOutlined, SearchOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import styles from "./CollapsedMenu.module.scss";
+import { useProductStore } from "@/app/store/UseProductStore";
 
 type MenuItems = Required<MenuProps>["items"][number];
 
-const items: MenuItems[] = [
-  { key: "1", label: <Link href="/">Home</Link> },
-  { key: "2", label: <Link href="/about">About</Link> },
-  { key: "3", label: <Link href="/contact">Contact Us</Link> },
-  { key: "4", label: <Link href="/blog">Blog</Link> },
-  {
-    key: "5",
-    label: (
-      <Input
-        className={styles.searchInput}
-        size="large"
-        placeholder=" Search"
-        prefix={<SearchOutlined />}
-      />
-    ),
-  },
-  { key: "6", label: <Link href="/favorites">Favorites</Link> },
-  { key: "7", label: <Link href="/cart">Cart</Link> },
-  { key: "8", label: <Link href="/profile">Profile</Link> },
-];
-
 const CollapsedMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const { searchProduct } = useProductStore(); // ✅ hook burada çağrılmalı
+
+  const items: MenuItems[] = [
+    { key: "1", label: <Link href="/">Home</Link> },
+    { key: "2", label: <Link href="/about">About</Link> },
+    { key: "3", label: <Link href="/contact">Contact Us</Link> },
+    { key: "4", label: <Link href="/blog">Blog</Link> },
+    {
+      key: "5",
+      label: (
+        <Input
+          className={styles.searchInput}
+          size="large"
+          placeholder=" Search"
+          prefix={<SearchOutlined />}
+          onChange={(e) => searchProduct(e.target.value)}
+        />
+      ),
+    },
+    { key: "6", label: <Link href="/favorites">Favorites</Link> },
+    { key: "7", label: <Link href="/cart">Cart</Link> },
+    { key: "8", label: <Link href="/profile">Profile</Link> },
+  ];
 
   const showDrawer = () => setOpen(true);
   const onClose = () => setOpen(false);

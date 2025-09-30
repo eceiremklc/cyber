@@ -3,6 +3,9 @@ import styles from "./Footer.module.scss";
 import { Row, Col } from "antd";
 import Image from "next/image";
 import { TwitterOutlined } from "@ant-design/icons";
+import { FaFacebookF } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -40,6 +43,9 @@ const Footer = () => {
       </Row>
       <div className={styles.socials}>
         <TwitterOutlined />
+        <FaFacebookF />
+        <FaTiktok />
+        <AiFillInstagram />
       </div>
     </div>
   );

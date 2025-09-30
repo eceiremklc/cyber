@@ -18,6 +18,7 @@ const ProductsTable: React.FC<Props> = ({ products }) => {
     addToWishlist,
     removeFromWishlist,
     favProducts,
+    addToCart,
   } = useProductStore();
   const formattedProducts = formatProducts(products);
   useEffect(() => {
@@ -47,6 +48,7 @@ const ProductsTable: React.FC<Props> = ({ products }) => {
                 addToWishlist={() => addToWishlist(product)}
                 removeFromWishlist={() => removeFromWishlist(product)}
                 heartActive={favProducts.some((p) => p.id === product.id)}
+                onClick={() => addToCart(product)}
               />
             </Col>
           ))}

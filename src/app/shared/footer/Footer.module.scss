@@ -1,13 +1,10 @@
 .footer {
   background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 104px 0;
   .footerContent {
     color: white;
     width: 80%;
-
+    margin: 0 auto !important;
     .aboutCol {
       p {
         font-size: 14px;
@@ -33,8 +30,12 @@
     }
   }
   .socials {
+    width: 80%;
+    margin: 24px auto 0 auto;
+
     svg {
       color: white;
+      margin-right: 36px;
     }
   }
 }

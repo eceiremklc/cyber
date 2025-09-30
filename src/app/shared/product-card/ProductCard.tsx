@@ -5,7 +5,6 @@ import { Flex } from "antd";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import Image from "next/image";
-import { useProductStore } from "@/app/store/UseProductStore";
 
 interface ProductCardProps {
   imageUrl: string;
@@ -14,6 +13,7 @@ interface ProductCardProps {
   addToWishlist?: () => void;
   removeFromWishlist?: () => void;
   heartActive?: boolean;
+  onClick: () => void;
 }
 const ProductCard: React.FC<ProductCardProps> = ({
   imageUrl,
@@ -22,6 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   addToWishlist,
   removeFromWishlist,
   heartActive = false,
+  onClick,
 }) => {
   return (
     <div className={styles.productCard}>
@@ -46,7 +47,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
         <h4>{title}</h4>
         <p>${price}</p>
-        <button className={styles.cartBtn}>Buy Now</button>
+        <button className={styles.cartBtn} onClick={onClick}>
+          Buy Now
+        </button>
       </Flex>
     </div>
   );

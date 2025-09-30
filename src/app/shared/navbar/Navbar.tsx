@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
@@ -10,8 +11,10 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 import CollapsedMenu from "./CollapsedMenu";
+import { useProductStore } from "@/app/store/UseProductStore";
 
 const Navbar = () => {
+  const { searchProduct, favProducts, cart } = useProductStore();
   return (
     <div className={styles.navbar}>
       <Flex
@@ -35,6 +38,7 @@ const Navbar = () => {
             size="large"
             placeholder=" Search"
             prefix={<SearchOutlined />}
+            onChange={(e) => searchProduct(e.target.value)}
           />
         </div>
         <div className={styles.links}>
@@ -54,9 +58,15 @@ const Navbar = () => {
         <div className={styles.icons}>
           <Link href="/wishlist" className={styles.icon}>
             <HeartOutlined />
+            <div className={styles.favCount}>
+              {favProducts.length > 0 ? favProducts.length : " "}
+            </div>
           </Link>
           <Link href="/cart" className={styles.icon}>
             <ShoppingCartOutlined />
+            <div className={styles.cartCount}>
+              {cart.length > 0 ? cart.length : " "}
+            </div>
           </Link>
           <Link href="/profile" className={styles.icon}>
             <UserOutlined />
