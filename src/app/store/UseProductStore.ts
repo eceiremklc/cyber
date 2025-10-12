@@ -11,6 +11,7 @@ type ProductStore = {
   cart: Product[];
   loading: boolean;
   error: string | null;
+  quantity?: number;
   //fetchAll: () => Promise<void>;
   setProducts: (products: Product[]) => void;
   searchProduct: (query: string) => Promise<void>;
@@ -21,7 +22,8 @@ type ProductStore = {
   removeFromWishlist: (product: Product) => void;
   addToCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
-  updateCartItemQuantity: (product: Product, quantity: number) => void;
+  increaseCartItemQuantity: (product: Product) => void;
+  decreaseCartItemQuantity: (product: Product)=>void;
 };
 export const useProductStore = create<ProductStore>()(
   persist(
@@ -32,6 +34,7 @@ export const useProductStore = create<ProductStore>()(
       cart: [],
       loading: false,
       error: null,
+      quantity: 1,
 
       // fetchAll: async () => {
       //   try {
@@ -159,15 +162,39 @@ export const useProductStore = create<ProductStore>()(
         console.log(`Ürün (ID: ${product.id}) sepetten kaldırıldı.`);
       },
 
-      updateCartItemQuantity: (product: Product, quantity: number) => {
+       increaseCartItemQuantity: (product: Product) => {
         const { cart } = get();
+
         const updatedCart = cart.map((item) =>
-          item.id === product.id ? { ...item, quantity } : item
+          item.id === product.id
+            ? { ...item, quantity: (item.quantity || 1) + 1 } // Mevcut miktarı 1 artır
+            : item
         );
         set({ cart: updatedCart });
-        console.log(
-          `Ürün (ID: ${product.id}) miktarı ${quantity} olarak güncellendi.`
-        );
+        console.log(`Ürün (ID: ${product.id}) miktarı artırıldı.`);
+      },
+
+      // Ürün miktarını 1 azaltır. Eğer miktar 1 ise ürünü sepetten kaldırır.
+      decreaseCartItemQuantity: (product: Product) => {
+        const { cart } = get();
+
+        const existingItem = cart.find((item) => item.id === product.id);
+
+        if (!existingItem) return; // Sepette yoksa bir şey yapma
+
+        // Miktar 1'den büyükse, 1 azalt
+        if ((existingItem.quantity || 1) > 1) {
+          const updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: item.quantity! - 1 } // Miktarı 1 azalt
+              : item
+          );
+          set({ cart: updatedCart });
+          console.log(`Ürün (ID: ${product.id}) miktarı 1 azaltıldı.`);
+        } else {
+          // Miktar 1 ise, ürünü tamamen sepetten kaldır
+          get().removeFromCart(product);
+        }
       },
     }),
     {

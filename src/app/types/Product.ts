@@ -7,5 +7,5 @@ export type Product = {
   description: string;
   image: string;
   category: string;
-  quantity?: number;
+  quantity: number;
 };

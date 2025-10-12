@@ -14,7 +14,6 @@ type Props = {
 const ProductsTable: React.FC<Props> = ({ products }) => {
   const {
     setProducts,
-    allProducts,
     addToWishlist,
     removeFromWishlist,
     favProducts,
