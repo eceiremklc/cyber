@@ -34,8 +34,6 @@ export const useProductStore = create<ProductStore>()(
       loading: false,
       error: null,
       quantity: 1,
-      //fetchAll: async () => {
-      //  set({ loading: true, error: null });
       setProducts: (products: Product[]) => {
         set({ products });
         set({ allProducts: products });

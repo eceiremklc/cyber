@@ -10,8 +10,9 @@ const CartContent = () => {
     increaseCartItemQuantity,
     decreaseCartItemQuantity,
     removeFromCart,
+    products,
   } = useProductStore();
-  console.log(cart);
+  console.log(products);
   return (
     <div className={styles.CartContent}>
       <h4 className={styles.header}>Shopping Cart</h4>
