@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { Product } from "../types/Product";
 import { persist } from "zustand/middleware";
-import { fetchProducts } from "../api/FetchProducts";
 import { formatProducts } from "../utils/formatProduct";
 
 type ProductStore = {
@@ -23,7 +22,7 @@ type ProductStore = {
   addToCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
   increaseCartItemQuantity: (product: Product) => void;
-  decreaseCartItemQuantity: (product: Product)=>void;
+  decreaseCartItemQuantity: (product: Product) => void;
 };
 export const useProductStore = create<ProductStore>()(
   persist(
@@ -35,29 +34,8 @@ export const useProductStore = create<ProductStore>()(
       loading: false,
       error: null,
       quantity: 1,
-
-      // fetchAll: async () => {
-      //   try {
-      //     set({ loading: true, error: null }); // Yeni yüklemede hatayı sıfırla
-      //     const data = await fetchProducts();
-      //     set({ products: data, allProducts: data, loading: false });
-      //   } catch (err: unknown) {
-      //     // Hata tipini 'unknown' olarak değiştirdik
-      //     // Hatanın bir Error objesi olup olmadığını kontrol et
-      //     if (err instanceof Error) {
-      //       set({
-      //         error: err.message,
-      //         loading: false,
-      //       });
-      //     } else {
-      //       // Eğer Error objesi değilse, genel bir hata mesajı ver
-      //       set({
-      //         error: "Bilinmeyen bir hata oluştu.",
-      //         loading: false,
-      //       });
-      //     }
-      //   }
-      // },
+      //fetchAll: async () => {
+      //  set({ loading: true, error: null });
       setProducts: (products: Product[]) => {
         set({ products });
         set({ allProducts: products });
@@ -162,37 +140,32 @@ export const useProductStore = create<ProductStore>()(
         console.log(`Ürün (ID: ${product.id}) sepetten kaldırıldı.`);
       },
 
-       increaseCartItemQuantity: (product: Product) => {
+      increaseCartItemQuantity: (product: Product) => {
         const { cart } = get();
 
         const updatedCart = cart.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: (item.quantity || 1) + 1 } // Mevcut miktarı 1 artır
+            ? { ...item, quantity: (item.quantity || 1) + 1 }
             : item
         );
         set({ cart: updatedCart });
-        console.log(`Ürün (ID: ${product.id}) miktarı artırıldı.`);
       },
 
-      // Ürün miktarını 1 azaltır. Eğer miktar 1 ise ürünü sepetten kaldırır.
       decreaseCartItemQuantity: (product: Product) => {
         const { cart } = get();
 
         const existingItem = cart.find((item) => item.id === product.id);
 
-        if (!existingItem) return; // Sepette yoksa bir şey yapma
+        if (!existingItem) return;
 
-        // Miktar 1'den büyükse, 1 azalt
         if ((existingItem.quantity || 1) > 1) {
           const updatedCart = cart.map((item) =>
             item.id === product.id
-              ? { ...item, quantity: item.quantity! - 1 } // Miktarı 1 azalt
+              ? { ...item, quantity: item.quantity! - 1 }
               : item
           );
           set({ cart: updatedCart });
-          console.log(`Ürün (ID: ${product.id}) miktarı 1 azaltıldı.`);
         } else {
-          // Miktar 1 ise, ürünü tamamen sepetten kaldır
           get().removeFromCart(product);
         }
       },
