@@ -6,9 +6,11 @@ import ProductsTable from "./home/components/products/ProductsTable";
 import BannerT from "./home/components/banner3/BannerT";
 import BannerFour from "./home/components/bannerFour/BannerFour";
 import Discount from "./home/components/discount/Discount";
+import { formatProducts } from "./utils/formatProduct";
 
 export default async function Home() {
   const products = await fetchISRProducts();
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -29,5 +31,6 @@ async function fetchISRProducts() {
     { next: { revalidate: 60 } }
   );
   const data = await res.json();
-  return data.products;
+
+  return formatProducts(data.products);
 }

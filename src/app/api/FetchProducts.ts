@@ -1,6 +1,8 @@
-export const fetchProducts = async () => {
+// fetchProducts.ts
+import { ApiProduct } from "../types/ApiProduct";
+
+export const fetchProducts = async (): Promise<ApiProduct[]> => {
   const res = await fetch("https://cyber-backend-lake.vercel.app/api/products");
-  if (!res.ok) throw new Error("Ürünler alınamadı");
   const data = await res.json();
-  return data.products;
+  return data.products; // bu ApiProduct[]
 };

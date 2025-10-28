@@ -19,7 +19,6 @@ const ProductsTable: React.FC<Props> = ({ products }) => {
     favProducts,
     addToCart,
   } = useProductStore();
-  const formattedProducts = formatProducts(products);
   useEffect(() => {
     setProducts(products);
   }, []);
@@ -38,7 +37,7 @@ const ProductsTable: React.FC<Props> = ({ products }) => {
       </Row>
       <Flex justify="space-between" align="center">
         <Row gutter={[16, 16]} className={styles.productsRow}>
-          {formattedProducts.slice(0, 8).map((product) => (
+          {products.slice(0, 8).map((product) => (
             <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
               <ProductCard
                 imageUrl={product.image}

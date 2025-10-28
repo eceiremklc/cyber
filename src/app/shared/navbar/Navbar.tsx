@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
 import { Flex, Input } from "antd";
@@ -12,9 +12,15 @@ import {
 import Link from "next/link";
 import CollapsedMenu from "./CollapsedMenu";
 import { useProductStore } from "@/app/store/UseProductStore";
+import { useUserStore } from "@/app/store/useUserStore";
 
 const Navbar = () => {
   const { searchProduct, favProducts, cart } = useProductStore();
+  const initializeUser = useUserStore((state) => state.initializeUser);
+
+  useEffect(() => {
+    initializeUser();
+  }, []);
   return (
     <div className={styles.navbar}>
       <Flex

@@ -1,0 +1,17 @@
+.registerForm {
+  gap: 15px;
+  .registerBtn {
+    width: 50%;
+    margin: 0 auto;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #eda96e;
+    transition: all ease-in-out 350ms;
+    &:hover {
+      background-color: #e3791c;
+      color: white;
+    }
+  }
+}

@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { Product } from "../types/Product";
 import { persist } from "zustand/middleware";
 import { formatProducts } from "../utils/formatProduct";
+import { fetchProducts as fetchApiProducts } from "../api/FetchProducts";
+import { ApiProduct } from "../types/ApiProduct";
 
 type ProductStore = {
   products: Product[];
@@ -11,7 +13,7 @@ type ProductStore = {
   loading: boolean;
   error: string | null;
   quantity?: number;
-  //fetchAll: () => Promise<void>;
+  fetchProducts: () => void;
   setProducts: (products: Product[]) => void;
   searchProduct: (query: string) => Promise<void>;
   filterProducts: (category: string) => void;
@@ -34,9 +36,15 @@ export const useProductStore = create<ProductStore>()(
       loading: false,
       error: null,
       quantity: 1,
+
       setProducts: (products: Product[]) => {
         set({ products });
         set({ allProducts: products });
+      },
+      fetchProducts: async () => {
+        const apiProducts: ApiProduct[] = await fetchApiProducts(); // ham veri
+        const formatted: Product[] = formatProducts(apiProducts); // işlenmiş veri
+        set({ products: formatted, allProducts: formatted }); // store artık Product[] ile çalışıyor
       },
 
       searchProduct: async (query: string) => {
@@ -73,8 +81,7 @@ export const useProductStore = create<ProductStore>()(
       },
       discountProducts: (discount: number) => {
         const { allProducts } = get();
-        const formatted = formatProducts(allProducts);
-        return formatted.filter((p) => p.discountPercentage >= discount);
+        return allProducts.filter((p) => p.discountPercentage >= discount);
       },
 
       sortProducts: (sortBy: string) => {

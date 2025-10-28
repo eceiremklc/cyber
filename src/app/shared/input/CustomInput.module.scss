@@ -1,0 +1,19 @@
+.required {
+  color: red;
+}
+.label {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+.customInput {
+  border-radius: 10px;
+  min-width: 250px;
+  width: 90%;
+  padding: 10px 14px;
+  border: 1px solid #777777;
+  &:focus {
+    outline: 1px solid #e3791c;
+    border: none;
+  }
+}

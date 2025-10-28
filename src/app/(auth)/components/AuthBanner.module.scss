@@ -1,0 +1,17 @@
+.authBanner {
+  width: 100%;
+  height: 240px;
+  background: url("https://woodmart.xtemos.com/accessories/wp-content/uploads/sites/7/2022/04/accessories-page-title.jpg")
+    center;
+  .authContent {
+    color: white;
+    .header {
+      font-size: 60px;
+      font-weight: 600;
+      margin: 0 0 15px 0;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
