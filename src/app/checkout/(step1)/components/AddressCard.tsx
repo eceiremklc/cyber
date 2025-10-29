@@ -1,21 +1,30 @@
 import React from "react";
 import styles from "./AddressCard.module.scss";
 import { Flex, Radio } from "antd";
+import type { Address } from "@/app/hooks/UseAddress";
 
-const AddressCard = () => {
+type props = {
+  address: Address[];
+};
+
+const AddressCard: React.FC<props> = ({ address }) => {
   return (
-    <div className={styles.addressCard}>
-      <Radio>adres adı</Radio>
-      <Flex align="center" justify="space-between">
-        <div>
-          <p>adres</p>
-          <p>telefon</p>
+    <div>
+      {address?.map((a, index) => (
+        <div className={styles.addressCard} key={index}>
+          <Radio>{a.title}</Radio>
+          <Flex align="center" justify="space-between">
+            <div>
+              <p>{a.body}</p>
+              <p>telefon</p>
+            </div>
+            <div>
+              <button>edit</button>
+              <button>delete</button>
+            </div>
+          </Flex>
         </div>
-        <div>
-          <button>edit</button>
-          <button>delete</button>
-        </div>
-      </Flex>
+      ))}
     </div>
   );
 };

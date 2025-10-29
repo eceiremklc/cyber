@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import { Steps } from "antd";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
 import styles from "./Checkout.module.scss";
-import AddressCard from "./components/AddressCard";
+import ManageAddresses from "./components/ManageAddresses";
 const Checkout = () => {
   return (
     <div className={styles.checkout}>
@@ -28,7 +29,7 @@ const Checkout = () => {
           },
         ]}
       />
-      <AddressCard />
+      <ManageAddresses />
     </div>
   );
 };
