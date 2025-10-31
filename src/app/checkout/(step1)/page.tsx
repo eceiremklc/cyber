@@ -1,12 +1,21 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Steps } from "antd";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
 import styles from "./Checkout.module.scss";
 import ManageAddresses from "./components/ManageAddresses";
+import { useAddress } from "@/app/hooks/UseAddress";
+import { useAddressStore } from "@/app/store/useAddressStore";
+
 const Checkout = () => {
+  const { getAddress } = useAddress();
+  const { addresses } = useAddressStore();
+  useEffect(() => {
+    getAddress();
+  }, [addresses]);
+
   return (
     <div className={styles.checkout}>
       <Steps
@@ -29,6 +38,7 @@ const Checkout = () => {
           },
         ]}
       />
+
       <ManageAddresses />
     </div>
   );

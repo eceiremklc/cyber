@@ -1,0 +1,17 @@
+.manageAddresses {
+  .add {
+    position: relative;
+    margin: 15px 0;
+    .addBtn {
+      position: absolute;
+      top: 20px;
+      right: 44%;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      &:hover {
+        background: transparent !important;
+      }
+    }
+  }
+}

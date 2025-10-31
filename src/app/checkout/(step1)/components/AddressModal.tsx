@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./AddressModal.module.scss";
 import { Modal } from "antd";
 import CustomInput from "@/app/shared/input/CustomInput";
+import { useAddress } from "@/app/hooks/UseAddress";
 
 type props = {
   open: boolean;
@@ -13,16 +14,21 @@ const AddressModal: React.FC<props> = ({ open, onClose }) => {
   const [addressTitle, setAddressTitle] = useState("");
   const [addressBody, setAddressBody] = useState("");
   const [badge, setBadge] = useState("");
-
+  const { createAddress } = useAddress();
+  const newAddress = {
+    id: +Date.now(),
+    title: addressTitle,
+    body: addressBody,
+    badge: badge,
+  };
   const handleOk = () => {
+    createAddress(newAddress);
     onClose();
   };
 
   const handleCancel = () => {
     onClose();
   };
-
-  useEffect(() => {});
 
   return (
     <>
