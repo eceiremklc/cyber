@@ -1,0 +1,56 @@
+.methodCard {
+  border: 1px solid #d1d1d8;
+  border-radius: 11px;
+  padding: 24px;
+  background: #fff;
+  color: #a2a3b1;
+  font-size: 16px;
+  transition: all 500ms ease-in-out;
+  p {
+    margin: 0;
+  }
+  &:hover {
+    box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+    border-color: #cfcfd6;
+  }
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.price {
+  font-weight: 500;
+}
+
+.desc {
+  font-weight: 400;
+}
+
+.date {
+  font-weight: 500;
+}
+
+.selectDate {
+  font-size: 13px;
+}
+
+.selected {
+  color: #17183b;
+}
+
+.datePicker {
+  :global(.ant-picker) {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+  :global(.ant-picker-input > input) {
+    padding: 0;
+    height: auto;
+    cursor: pointer;
+    color: #9b9b9b;
+  }
+}

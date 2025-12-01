@@ -1,33 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./AddressCard.module.scss";
 import { Badge, Button, Flex } from "antd";
 import CustomRadio from "@/app/shared/radio/CustomRadio";
 import { MdEdit, MdClose } from "react-icons/md";
 import { useAddressStore } from "@/app/store/useAddressStore";
-import { useAddress } from "@/app/hooks/UseAddress";
+import { useAddress, Address } from "@/app/hooks/UseAddress";
 
 const AddressCard = () => {
-  const [checked, setChecked] = useState(false);
-  const { addresses } = useAddressStore();
+  const { addresses, selectedAddress, setSelectedAddress } = useAddressStore();
   const { deleteAddress } = useAddress();
+  const selectAddress = (addr: Address) => {
+    // set the selected address in the store
+    setSelectedAddress(addr);
+    console.log("Selected Address:", addr);
+  };
   return (
     <Flex vertical gap={24}>
-      {addresses?.map((a, index) => (
+      {addresses?.map((a) => (
         <Flex
           className={styles.addressCard}
-          key={index}
+          key={a.id}
           align="center"
           justify="space-between"
         >
           <div className={styles.cardContent}>
             <Flex align="center" gap={16} className={styles.selectAddress}>
-              {" "}
               <CustomRadio
-                onChange={() =>
-                  checked ? setChecked(false) : setChecked(true)
-                }
-                checked={checked}
+                onChange={() => selectAddress(a)}
+                checked={!!selectedAddress && selectedAddress.id === a.id}
               />
               <p className={styles.label}>{a.title}</p>
               <Badge count={a.badge} color="black" />

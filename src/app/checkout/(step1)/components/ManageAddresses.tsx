@@ -5,6 +5,7 @@ import AddressCard from "./AddressCard";
 import Image from "next/image";
 import { Button } from "antd";
 import AddressModal from "./AddressModal";
+import CheckoutNavBtns from "@/app/shared/checkout-nav-buttons/CheckoutNavBtns";
 
 const ManageAddresses = () => {
   const [open, setOpen] = useState(false);
@@ -19,6 +20,7 @@ const ManageAddresses = () => {
           Adres Ekle
         </Button>
       </div>
+      <CheckoutNavBtns backUrl="/cart" nextUrl="/checkout/shipping" />
       <AddressModal open={open} onClose={() => setOpen(false)} />
     </div>
   );

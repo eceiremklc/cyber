@@ -3,6 +3,8 @@ import { Address } from "../hooks/UseAddress";
 
 type AddressStore = {
   addresses: Address[];
+  selectedAddress?: Address;
+  setSelectedAddress: (address: Address) => void;
   setAddresses: (list: Address[]) => void;
   addAddress: (item: Address) => void;
   deleteAddress: (id: number) => void;
@@ -13,6 +15,9 @@ export const useAddressStore = create<AddressStore>((set, get) => ({
   addresses: [],
 
   setAddresses: (list) => set({ addresses: list }),
+  setSelectedAddress(address) {
+    set({ selectedAddress: address });
+  },
 
   addAddress: (item) => {
     set({ addresses: [...get().addresses, item] });

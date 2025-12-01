@@ -9,6 +9,24 @@ import ManageAddresses from "./components/ManageAddresses";
 import { useAddress } from "@/app/hooks/UseAddress";
 import { useAddressStore } from "@/app/store/useAddressStore";
 
+export const itemArray = [
+  {
+    icon: <FaLocationDot />,
+    title: "Step 1",
+    description: "Address",
+  },
+  {
+    icon: <FaShoppingCart />,
+    title: "Step 2",
+    description: "Shipping",
+  },
+  {
+    icon: <MdPayment />,
+    title: "Step 3",
+    description: "Payment",
+  },
+];
+
 const Checkout = () => {
   const { getAddress } = useAddress();
   const { addresses } = useAddressStore();
@@ -18,27 +36,7 @@ const Checkout = () => {
 
   return (
     <div className={styles.checkout}>
-      <Steps
-        current={0}
-        items={[
-          {
-            icon: <FaLocationDot />,
-            title: "Step 1",
-            description: "Address",
-          },
-          {
-            icon: <FaShoppingCart />,
-            title: "Step 2",
-            description: "Shipping",
-          },
-          {
-            icon: <MdPayment />,
-            title: "Step 3",
-            description: "Payment",
-          },
-        ]}
-      />
-
+      <Steps current={0} items={itemArray} />
       <ManageAddresses />
     </div>
   );
