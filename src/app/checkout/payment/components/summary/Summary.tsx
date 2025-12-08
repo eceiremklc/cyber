@@ -8,7 +8,7 @@ import { useAddressStore } from "@/app/store/useAddressStore";
 
 const Summary = () => {
   const { cart } = useProductStore();
-  const { selectedAddress } = useAddressStore();
+  const { selectedAddress, selectedShippingMethod } = useAddressStore();
   return (
     <div className={styles.summary}>
       <h3>Summary</h3>
@@ -22,6 +22,14 @@ const Summary = () => {
           <p>Address</p>
           <p>
             {selectedAddress ? selectedAddress.body : "No address selected"}
+          </p>
+        </div>
+        <div>
+          <p>Shipment method</p>
+          <p>
+            {selectedShippingMethod
+              ? selectedShippingMethod.price
+              : "No method selected"}
           </p>
         </div>
       </Flex>

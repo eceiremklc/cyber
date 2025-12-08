@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import styles from "./MethodCard.module.scss";
-import { Flex, Radio, DatePicker } from "antd";
-import type { Dayjs } from "dayjs";
+import { Flex, DatePicker } from "antd";
+import dayjs, { Dayjs } from "dayjs";
 import CustomRadio from "@/app/shared/radio/CustomRadio";
 
 type Props = {
@@ -44,21 +44,21 @@ const MethodCard: React.FC<Props> = ({
           </div>
         </Flex>
         <div>
-          {formattedDate ? (
-            <p className={styles.date}>{formattedDate}</p>
-          ) : // show DatePicker when this card is selected, otherwise show placeholder text
-          checked ? (
+          {checked ? (
             <div
               className={styles.datePicker}
               onClick={(e) => e.stopPropagation()}
             >
               <DatePicker
+                value={date ? dayjs(date) : null}
                 onChange={(m: Dayjs | null) =>
                   onDateChange?.(m ? m.toDate() : undefined)
                 }
                 allowClear
               />
             </div>
+          ) : date ? (
+            <p className={styles.date}>{formattedDate}</p>
           ) : (
             <p className={styles.selectDate}>Select Date ▾</p>
           )}

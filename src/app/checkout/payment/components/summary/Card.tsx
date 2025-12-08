@@ -10,13 +10,20 @@ type Props = {
 
 const Card: React.FC<Props> = ({ product }) => {
   return (
-    <Flex justify="space-between" className={styles.card}>
-      <Flex gap={16}>
-        <Image src={product.image} width={40} height={40} alt={product.title} />
-        <p className={styles.pTitle}>{product.title}</p>
+    <div className={styles.card}>
+      <Flex justify="space-between">
+        <Flex gap={16}>
+          <Image
+            src={product.image}
+            width={40}
+            height={40}
+            alt={product.title}
+          />
+          <p className={styles.pTitle}>{product.title}</p>
+        </Flex>
+        <p className={styles.pPrice}>${product.price}</p>
       </Flex>
-      <p className={styles.pPrice}>${product.price}</p>
-    </Flex>
+    </div>
   );
 };
 
