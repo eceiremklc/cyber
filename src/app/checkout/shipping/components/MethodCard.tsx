@@ -4,14 +4,16 @@ import styles from "./MethodCard.module.scss";
 import { Flex, DatePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import CustomRadio from "@/app/shared/radio/CustomRadio";
+import { useAddressStore } from "@/app/store/useAddressStore";
 
 type Props = {
   price: string;
   description: string;
-  date?: Date;
+  date?: Dayjs | null;
   checked: boolean;
+  isDatePicker: boolean;
   onSelect: () => void;
-  onDateChange?: (d?: Date) => void;
+  onDateChange?: (d?: Dayjs) => void;
 };
 
 const MethodCard: React.FC<Props> = ({
@@ -19,17 +21,18 @@ const MethodCard: React.FC<Props> = ({
   description,
   date,
   checked,
+  isDatePicker,
   onSelect,
   onDateChange,
 }) => {
-  const formattedDate = date
-    ? date.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      })
-    : null;
-
+  const formatDate = (date: Dayjs | null | undefined) => {
+    if (date) {
+      const dayjsInstance = dayjs(date);
+      return dayjsInstance.format("D MMM YYYY");
+    }
+    return "";
+  };
+  const { deliveryDate } = useAddressStore();
   return (
     <div
       className={`${styles.methodCard} ${checked ? styles.selected : ""}`}
@@ -44,21 +47,22 @@ const MethodCard: React.FC<Props> = ({
           </div>
         </Flex>
         <div>
-          {checked ? (
+          {checked && isDatePicker ? (
             <div
               className={styles.datePicker}
               onClick={(e) => e.stopPropagation()}
             >
               <DatePicker
-                value={date ? dayjs(date) : null}
+                value={deliveryDate ? dayjs(deliveryDate) : date}
                 onChange={(m: Dayjs | null) =>
-                  onDateChange?.(m ? m.toDate() : undefined)
+                  onDateChange?.(m ? m : undefined)
                 }
                 allowClear
+                format="D MMM YYYY"
               />
             </div>
           ) : date ? (
-            <p className={styles.date}>{formattedDate}</p>
+            <p className={styles.date}>{formatDate(date)}</p>
           ) : (
             <p className={styles.selectDate}>Select Date ▾</p>
           )}

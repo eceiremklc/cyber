@@ -5,11 +5,11 @@ import MethodCard from "./MethodCard";
 import { Flex } from "antd";
 import { useAddressStore } from "@/app/store/useAddressStore";
 import { ShippingMethod } from "@/app/types/shippingMethod";
+import dayjs, { Dayjs } from "dayjs";
 
-const addDays = (days: number): Date => {
-  const date = new Date();
-  date.setDate(date.getDate() + days);
-  return date;
+const addDays = (days: number): Dayjs => {
+  const date = dayjs();
+  return date.add(days, "day");
 };
 
 const initialShippingMethods: ShippingMethod[] = [
@@ -38,9 +38,10 @@ const initialShippingMethods: ShippingMethod[] = [
 
 const ShippingMethods: React.FC = () => {
   const [selectedMethodId, setSelectedMethodId] = useState<number>(0);
-  const [scheduledDate, setScheduledDate] = useState<Date | null>(null);
+  const [scheduledDate, setScheduledDate] = useState<Dayjs | null>(null);
 
-  const { setSelectedShippingMethod } = useAddressStore();
+  const { setSelectedShippingMethod, selectedShippingMethod, deliveryDate } =
+    useAddressStore();
 
   const handleSelect = (method: ShippingMethod) => {
     setSelectedMethodId(method.id);
@@ -54,7 +55,7 @@ const ShippingMethods: React.FC = () => {
     }
   };
 
-  const handleDateChange = (date?: Date) => {
+  const handleDateChange = (date?: Dayjs) => {
     setScheduledDate(date ?? null);
     const scheduledMethod = initialShippingMethods.find((m) => m.id === 2);
     if (scheduledMethod) {
@@ -75,11 +76,12 @@ const ShippingMethods: React.FC = () => {
             key={method.id}
             price={method.price}
             description={method.description}
-            checked={method.id === selectedMethodId}
+            checked={method.id === selectedShippingMethod?.id}
             date={
               (method.id === 2 ? scheduledDate : method.getCalculatedDate()) ??
               undefined
             }
+            isDatePicker={method.isDatePicker}
             onSelect={() => handleSelect(method)}
             onDateChange={handleDateChange}
           />

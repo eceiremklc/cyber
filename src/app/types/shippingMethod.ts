@@ -1,8 +1,10 @@
+import { Dayjs } from "dayjs";
+
 export interface ShippingMethod {
   id: number;
   price: string;
   description: string;
-  getCalculatedDate: () => Date | null | undefined;
+  getCalculatedDate: () => Dayjs | null | undefined;
   isDatePicker: boolean;
-  deliveryDate?: Date | null;
+  deliveryDate?: Dayjs | null;
 }

@@ -2,13 +2,14 @@ import { create } from "zustand";
 import { Address } from "../hooks/UseAddress";
 import { persist } from "zustand/middleware";
 import { ShippingMethod } from "../types/shippingMethod";
+import { Dayjs } from "dayjs";
 
 type AddressStore = {
   addresses: Address[];
   selectedAddress?: Address;
   selectedShippingMethod?: ShippingMethod;
   setSelectedShippingMethod: (method: ShippingMethod) => void;
-  deliveryDate?: Date | null;
+  deliveryDate?: Dayjs | null;
   setSelectedAddress: (address: Address) => void;
   setAddresses: (list: Address[]) => void;
   addAddress: (item: Address) => void;
@@ -49,6 +50,8 @@ export const useAddressStore = create<AddressStore>()(
       name: "address-store",
       partialize: (state) => ({
         selectedAddress: state.selectedAddress,
+        selectedShippingMethod: state.selectedShippingMethod,
+        deliveryDate: state.deliveryDate,
       }),
     }
   )
