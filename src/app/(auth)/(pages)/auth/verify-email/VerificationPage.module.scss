@@ -31,7 +31,6 @@
   }
 }
 
-/* ---- Animations ---- */
 @keyframes pop {
   0% {
     transform: scale(0.6);
@@ -46,7 +45,6 @@
   }
 }
 
-/* ---- Responsive ---- */
 @media (max-width: 480px) {
   .wrapper {
     gap: 10px;

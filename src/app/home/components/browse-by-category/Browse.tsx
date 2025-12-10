@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Browse.module.scss";
 import { Row, Col } from "antd";
 import CategoryCard from "./CategoryCard";

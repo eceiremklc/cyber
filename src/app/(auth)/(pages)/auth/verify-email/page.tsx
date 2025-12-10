@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import styles from "./VerificationPage.module.scss";
 import { Flex } from "antd";
 

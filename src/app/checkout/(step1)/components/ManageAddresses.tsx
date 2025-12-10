@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./ManageAddresses.module.scss";
 import AddressCard from "./AddressCard";
 import Image from "next/image";

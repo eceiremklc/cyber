@@ -5,7 +5,6 @@ import { Flex, Row, Col } from "antd";
 import { useProductStore } from "@/app/store/UseProductStore";
 import ProductCard from "@/app/shared/product-card/ProductCard";
 import { Product } from "@/app/types/Product";
-import { formatProducts } from "@/app/utils/formatProduct";
 
 type Props = {
   products: Product[];

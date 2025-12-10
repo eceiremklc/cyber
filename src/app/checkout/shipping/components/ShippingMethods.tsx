@@ -40,7 +40,7 @@ const ShippingMethods: React.FC = () => {
   const [selectedMethodId, setSelectedMethodId] = useState<number>(0);
   const [scheduledDate, setScheduledDate] = useState<Dayjs | null>(null);
 
-  const { setSelectedShippingMethod, selectedShippingMethod, deliveryDate } =
+  const { setSelectedShippingMethod, selectedShippingMethod } =
     useAddressStore();
 
   const handleSelect = (method: ShippingMethod) => {

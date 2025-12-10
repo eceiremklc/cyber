@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
 import { Flex, Input } from "antd";

@@ -1,5 +1,4 @@
 import PrivateRoute from "@/app/shared/privateRoute/PrivateRoute";
-import React from "react";
 
 const page = () => {
   return (

@@ -1,6 +1,5 @@
 "use client";
 import { Col, Row } from "antd";
-import React from "react";
 import CartContent from "./components/cart-content/CartContent";
 import styles from "./Cart.module.scss";
 import OrderSummary from "./components/order-summary/OrderSummary";

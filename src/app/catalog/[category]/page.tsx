@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./Catalog.module.scss";
 import { useProductStore } from "@/app/store/UseProductStore";
 import { useParams } from "next/navigation";

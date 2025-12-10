@@ -1,4 +1,3 @@
-import React from "react";
 import RegisterForm from "../../components/register/RegisterForm";
 import AuthBanner from "../../components/AuthBanner";
 import { Col, Row } from "antd";

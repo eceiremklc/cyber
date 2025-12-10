@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import styles from "./AddressCard.module.scss";
 import { Badge, Button, Flex } from "antd";
 import CustomRadio from "@/app/shared/radio/CustomRadio";
@@ -11,7 +10,6 @@ const AddressCard = () => {
   const { addresses, selectedAddress, setSelectedAddress } = useAddressStore();
   const { deleteAddress } = useAddress();
   const selectAddress = (addr: Address) => {
-    // set the selected address in the store
     setSelectedAddress(addr);
     console.log("Selected Address:", addr);
   };
