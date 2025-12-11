@@ -1,0 +1,28 @@
+@import "src/app/mixins.scss";
+.card {
+  background: linear-gradient(
+    90deg,
+    #121216 0%,
+    #16171a 8.333%,
+    #1a1b1f 16.667%,
+    #1f2023 25%,
+    #232427 33.333%,
+    #27282b 41.667%,
+    #2b2c2f 50%,
+    #2f3033 58.333%,
+    #323337 66.667%,
+    #36373a 75%,
+    #38393d 83.333%,
+    #3b3c40 91.667%,
+    #3d3e42 100%
+  );
+  width: 337px;
+  height: 190px;
+  border-radius: 20px;
+  .chip {
+    padding: 25px;
+  }
+  .cardNumber {
+    @include font(20px, 500, 24px, #ffffff, 10px 0 16px 25px);
+  }
+}

@@ -1,0 +1,26 @@
+@use "src/app/mixins.scss" as *;
+.payment {
+  .head {
+    @include font(20px, 700, 16px, #000000, 0 0 24px 0);
+  }
+  .methods {
+    .methodBtn {
+      @include font(14px, 500, 16px, #717171);
+      padding: 8px 0;
+      width: auto;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    .selected {
+      @include font(14px, 500, 16px, #000000);
+    }
+    .line {
+      height: 1px;
+      width: 100%;
+      margin: 0;
+      background-color: #000000;
+    }
+    margin: 0 0 40px 0;
+  }
+}

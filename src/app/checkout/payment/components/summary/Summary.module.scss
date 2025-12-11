@@ -1,8 +1,46 @@
+@use "src/app/mixins.scss" as *;
+.address {
+  margin: 24px 0 16px 0;
+  .addressHead {
+    @include font(14px, 500, 16px, #545454, 0 0 8px 0);
+  }
+  .addressBody {
+    @include font(16px, 400, 24px, #000000, 12px 0);
+  }
+}
+.shipment {
+  .shipmentHead {
+    @include font(14px, 500, 16px, #545454, 0 0 8px 0);
+  }
+  .shipmentBody {
+    @include font(16px, 400, 24px, #000000);
+  }
+}
 .summary {
   border: 1px solid #ebebeb;
   border-radius: 10px;
   padding: 32px 24px;
   h3 {
-    margin: 0 0 24px 0;
+    @include font(20px, 500, 16px, #000000, 0 0 24px 0);
+  }
+  .subtotal {
+    @include font(16px, 500, 24px, #000000, 24px 0 16px 0);
+    p {
+      margin: 0;
+    }
+  }
+  .tax {
+    .taxHead {
+      @include font(16px, 400, 32px, #545454, 0 0 8px 0);
+    }
+    .taxPrice {
+      @include font(16px, 500, 32px, #000000, 0 0 8px 0);
+    }
+  }
+  .totalHead {
+    @include font(16px, 500, 24px, #000000, 8px 0 0 0);
+  }
+  .totalPrice {
+    @include font(16px, 700, 32px, #000000, 8px 0 0 0);
   }
 }

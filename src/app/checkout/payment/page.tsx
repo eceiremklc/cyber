@@ -3,6 +3,7 @@ import { itemArray } from "../(step1)/page";
 import { Col, Flex, Steps } from "antd";
 import styles from "./Payment.module.scss";
 import Summary from "./components/summary/Summary";
+import PaymentRight from "./components/payment/PaymentRight";
 
 const Payment = () => {
   return (
@@ -12,7 +13,9 @@ const Payment = () => {
         <Col xl={11} md={24}>
           <Summary />
         </Col>
-        <Col xl={11} md={24}></Col>
+        <Col xl={11} md={24}>
+          <PaymentRight />
+        </Col>
       </Flex>
     </div>
   );
