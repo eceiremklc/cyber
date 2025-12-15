@@ -23,4 +23,45 @@
     }
     margin: 0 0 40px 0;
   }
+  .check {
+    margin: 49px 0;
+
+    :global(.ant-checkbox-wrapper) {
+      font-size: 15px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    :global(.ant-checkbox-inner) {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    :global(.ant-checkbox-checked .ant-checkbox-inner) {
+      background-color: #000;
+      border-color: #000;
+    }
+
+    :global(.ant-checkbox-checked .ant-checkbox-inner::after) {
+      border-color: #fff;
+    }
+
+    :global(.ant-checkbox + span) {
+      padding-left: 6px;
+    }
+    :global(
+        .ant-checkbox-wrapper:hover
+          .ant-checkbox.ant-checkbox-checked
+          .ant-checkbox-inner
+      ) {
+      background-color: #000;
+      border-color: #000;
+    }
+
+    :global(.ant-checkbox-wrapper:hover .ant-checkbox-inner::after) {
+      border-color: #fff;
+    }
+  }
 }

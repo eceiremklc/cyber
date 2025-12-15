@@ -19,10 +19,53 @@
   width: 337px;
   height: 190px;
   border-radius: 20px;
+  margin-bottom: 16px;
   .chip {
     padding: 25px;
   }
   .cardNumber {
     @include font(20px, 500, 24px, #ffffff, 10px 0 16px 25px);
   }
+  .cardBottom {
+    padding: 0 25px;
+    .cardHolder {
+      @include font(14px, 500, 20px, #ffffff);
+    }
+  }
+  .cardBack {
+    color: #ffffff;
+    padding: 25px;
+    height: 75%;
+    transform: rotateY(180deg);
+  }
+}
+.card {
+  perspective: 1000px;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  color: #ffffff;
+  padding: 25px;
 }

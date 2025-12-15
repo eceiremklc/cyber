@@ -7,8 +7,13 @@ import { useRouter } from "next/navigation";
 type Props = {
   backUrl: string;
   nextUrl: string;
+  nextChildren?: string;
 };
-const CheckoutNavBtns: React.FC<Props> = ({ backUrl, nextUrl }) => {
+const CheckoutNavBtns: React.FC<Props> = ({
+  backUrl,
+  nextUrl,
+  nextChildren,
+}) => {
   const router = useRouter();
   return (
     <Flex gap={24} justify="flex-end" className={styles.navButtons}>
@@ -16,7 +21,7 @@ const CheckoutNavBtns: React.FC<Props> = ({ backUrl, nextUrl }) => {
         Back
       </Button>
       <Button className={styles.nextBtn} onClick={() => router.push(nextUrl)}>
-        Next
+        {nextChildren ? nextChildren : "Next"}
       </Button>
     </Flex>
   );

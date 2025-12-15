@@ -8,12 +8,15 @@
 }
 .customInput {
   border-radius: 10px;
-  min-width: 250px;
+  min-width: 180px;
   width: 90%;
   padding: 10px 14px;
-  border: 1px solid #777777;
+  border: 1px solid #ddd;
   &:focus {
     outline: 1px solid #e3791c;
     border: none;
+  }
+  &::placeholder {
+    color: #bbb;
   }
 }

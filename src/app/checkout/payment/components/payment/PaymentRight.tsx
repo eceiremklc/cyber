@@ -1,6 +1,7 @@
-import { Button, Flex } from "antd";
+import { Button, Checkbox, Flex } from "antd";
 import styles from "./PaymentRight.module.scss";
-import CreditCard from "./CreditCard";
+import PaymentForm from "./PaymentForm";
+import CheckoutNavBtns from "@/app/shared/checkout-nav-buttons/CheckoutNavBtns";
 
 const PaymentRight = () => {
   return (
@@ -24,7 +25,17 @@ const PaymentRight = () => {
           PayPal Credit
         </Button>
       </Flex>
-      <CreditCard />
+      <PaymentForm />
+      <div className={styles.check}>
+        <Checkbox>Same as billing address</Checkbox>
+      </div>
+      <Flex justify="flex-start" className={styles.nav}>
+        <CheckoutNavBtns
+          backUrl="/checkout/shipping"
+          nextUrl="/pay"
+          nextChildren="Pay"
+        />
+      </Flex>
     </div>
   );
 };
