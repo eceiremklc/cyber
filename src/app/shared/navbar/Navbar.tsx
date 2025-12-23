@@ -1,8 +1,8 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
-import { Flex, Input } from "antd";
+import { Col, Flex, Input } from "antd";
 import {
   SearchOutlined,
   HeartOutlined,
@@ -15,12 +15,17 @@ import { useProductStore } from "@/app/store/UseProductStore";
 import { useUserStore } from "@/app/store/useUserStore";
 
 const Navbar = () => {
-  const { searchProduct, favProducts, cart } = useProductStore();
+  const [search, setSearch] = useState("");
+  const { searchProduct, favProducts, cart, products } = useProductStore();
   const initializeUser = useUserStore((state) => state.initializeUser);
-
+  const handleSearch = (query: string) => {
+    searchProduct(query);
+    setSearch(query);
+  };
   useEffect(() => {
     initializeUser();
   }, []);
+
   return (
     <div className={styles.navbar}>
       <Flex
@@ -44,8 +49,25 @@ const Navbar = () => {
             size="large"
             placeholder=" Search"
             prefix={<SearchOutlined />}
-            onChange={(e) => searchProduct(e.target.value)}
+            onChange={(e) => handleSearch(e.target.value)}
           />
+          {search ? (
+            <Col className={styles.searchField}>
+              {products.map((product) => (
+                <div key={product.id} className={styles.searchItem}>
+                  <p>{product.title}</p>
+                </div>
+              ))}
+            </Col>
+          ) : (
+            <Col xs={0} className={styles.searchField}>
+              {products.map((product) => (
+                <div key={product.id} className={styles.searchItem}>
+                  <p>{product.title}</p>
+                </div>
+              ))}
+            </Col>
+          )}
         </div>
         <div className={styles.links}>
           <Link href="/" className={styles.link}>
