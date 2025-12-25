@@ -1,10 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
-import { Col, Flex, Input } from "antd";
+import { Flex } from "antd";
 import {
-  SearchOutlined,
   HeartOutlined,
   ShoppingCartOutlined,
   UserOutlined,
@@ -13,15 +12,12 @@ import Link from "next/link";
 import CollapsedMenu from "./CollapsedMenu";
 import { useProductStore } from "@/app/store/UseProductStore";
 import { useUserStore } from "@/app/store/useUserStore";
+import SearchProduct from "./SearchProduct";
 
 const Navbar = () => {
-  const [search, setSearch] = useState("");
-  const { searchProduct, favProducts, cart, products } = useProductStore();
+  const { favProducts, cart } = useProductStore();
   const initializeUser = useUserStore((state) => state.initializeUser);
-  const handleSearch = (query: string) => {
-    searchProduct(query);
-    setSearch(query);
-  };
+
   useEffect(() => {
     initializeUser();
   }, []);
@@ -43,32 +39,7 @@ const Navbar = () => {
           />
         </div>
         <CollapsedMenu />
-        <div className={styles.searchBar}>
-          <Input
-            className={styles.searchInput}
-            size="large"
-            placeholder=" Search"
-            prefix={<SearchOutlined />}
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-          {search ? (
-            <Col className={styles.searchField}>
-              {products.map((product) => (
-                <div key={product.id} className={styles.searchItem}>
-                  <p>{product.title}</p>
-                </div>
-              ))}
-            </Col>
-          ) : (
-            <Col xs={0} className={styles.searchField}>
-              {products.map((product) => (
-                <div key={product.id} className={styles.searchItem}>
-                  <p>{product.title}</p>
-                </div>
-              ))}
-            </Col>
-          )}
-        </div>
+        <SearchProduct />
         <div className={styles.links}>
           <Link href="/" className={styles.link}>
             Home
